@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFDFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_back" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
+                <TextView
+                    android:id="@+id/profileTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/brand_dark"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/profileSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/brand_dark_50"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="School &amp; Period" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:id="@+id/valueSchool" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" android:layout_marginTop="8dp" />
+                <TextView android:id="@+id/valueLga" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valuePeriod" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valueStatus" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Waste Collection" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:id="@+id/valuePlastic" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" android:layout_marginTop="8dp" />
+                <TextView android:id="@+id/valuePaper" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valueMetal" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valueGlass" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valueOrganic" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valueOther" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Operations" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:id="@+id/valueSold" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" android:layout_marginTop="8dp" />
+                <TextView android:id="@+id/valueIncome" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valueBuyer" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valueChallenges" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valueParticipation" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+                <TextView android:id="@+id/valueRemarks" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Photos" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+                    <ImageView android:id="@+id/photo1" android:layout_width="0dp" android:layout_height="120dp" android:layout_weight="1" android:src="@drawable/ic_person" android:scaleType="centerCrop" />
+                    <ImageView android:id="@+id/photo2" android:layout_width="0dp" android:layout_height="120dp" android:layout_weight="1" android:layout_marginStart="8dp" android:src="@drawable/ic_person" android:scaleType="centerCrop" />
+                    <ImageView android:id="@+id/photo3" android:layout_width="0dp" android:layout_height="120dp" android:layout_weight="1" android:layout_marginStart="8dp" android:src="@drawable/ic_person" android:scaleType="centerCrop" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

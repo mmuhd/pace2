@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFDFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Women’s Training Session" android:textStyle="bold" android:textSize="20sp" android:textColor="@color/brand_dark" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fill session details and aggregates" android:textSize="12sp" android:textColor="@color/brand_dark_50" android:layout_marginTop="4dp" />
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section A – Session Details" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Session Title*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/titleEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. Women Waste Sorting – Yankaba" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Date*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <TextView android:id="@+id/dateText" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tap to select date" android:textColor="@color/brand_dark_50" android:textSize="14sp" android:background="@drawable/spinner_bg" android:paddingTop="6dp" android:paddingBottom="6dp" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Start Time" android:textColor="@color/brand_dark" android:textSize="12sp" />
+                        <TextView android:id="@+id/startTimeText" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp" android:background="@drawable/spinner_bg" android:paddingTop="6dp" android:paddingBottom="6dp" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="8dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="End Time" android:textColor="@color/brand_dark" android:textSize="12sp" />
+                        <TextView android:id="@+id/endTimeText" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp" android:background="@drawable/spinner_bg" android:paddingTop="6dp" android:paddingBottom="6dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LGA*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/lgaSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Community / Ward*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/communityEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. Yankaba" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Venue Type*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/venueSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Facilitator" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <TextView android:id="@+id/facilitatorText" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Supporting Organisation" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/organisationEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. REMASAB" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section B – Participant Summary" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Women Attending*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/totalWomenEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Age Breakdown (optional)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="18–25" android:textColor="@color/brand_dark" android:textSize="12sp" />
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/age18Edit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="26–35" android:textColor="@color/brand_dark" android:textSize="12sp" />
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/age26Edit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="36–45" android:textColor="@color/brand_dark" android:textSize="12sp" />
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/age36Edit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="4dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="46+" android:textColor="@color/brand_dark" android:textSize="12sp" />
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/age46Edit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Attendance Type" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <RadioButton android:id="@+id/attendanceNew" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New participants" android:textColor="@color/brand_dark" />
+                    <RadioButton android:id="@+id/attendanceMixed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mixed" android:textColor="@color/brand_dark" android:layout_marginStart="16dp" />
+                </RadioGroup>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Households Represented" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/householdsEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section C – Training Content &amp; Method" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Topics Covered*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <CheckBox android:id="@+id/cbTopicSorting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="What is waste sorting" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbTopicCategories" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Categories of household waste" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbTopicPlastics" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Proper disposal of plastics" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbTopicImpacts" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Health &amp; environmental impacts" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbTopicSeparate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="How to separate at home / compounds" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbTopicIncome" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Income opportunities from sorted waste" android:textColor="@color/brand_dark" />
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Training Methods*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <CheckBox android:id="@+id/cbMethodDiscussion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Group discussion" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbMethodDemo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Demonstration" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbMethodPractical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Practical sorting exercise" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbMethodVisual" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Use of visual aids" android:textColor="@color/brand_dark" />
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Duration*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/durationSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section D – Pre/Post Test Summary" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Did you administer pre/post test?*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <RadioGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <RadioButton android:id="@+id/pretestYes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" android:textColor="@color/brand_dark" />
+                    <RadioButton android:id="@+id/pretestNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:textColor="@color/brand_dark" android:layout_marginStart="16dp" />
+                </RadioGroup>
+                <LinearLayout android:id="@+id/pretestSection" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="8dp" android:visibility="gone">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="# With Correct Understanding of ‘Waste Sorting’" android:textColor="@color/brand_dark" android:textSize="12sp" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/knowBeforeEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Before" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none" android:layout_marginStart="8dp">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/knowAfterEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="After" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="# Can name 3 waste categories" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/catsBeforeEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Before" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none" android:layout_marginStart="8dp">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/catsAfterEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="After" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="# Answered ‘All waste should be burned’ as False" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/burnBeforeEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Before" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="none" android:layout_marginStart="8dp">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/burnAfterEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="After" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Average confidence to teach others (1–5)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <Spinner android:id="@+id/confidenceBeforeSpinner" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/spinner_bg" />
+                        <Spinner android:id="@+id/confidenceAfterSpinner" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/spinner_bg" android:layout_marginStart="8dp" />
+                    </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Average perceived importance (1–5)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <Spinner android:id="@+id/importanceBeforeSpinner" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/spinner_bg" />
+                        <Spinner android:id="@+id/importanceAfterSpinner" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/spinner_bg" android:layout_marginStart="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section E – Adoption &amp; Follow-Up" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Women committed to start sorting at home*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/committedEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Follow-up Plan*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/followupSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Next Visit / Follow-up Date" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <TextView android:id="@+id/followupDateText" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp" android:background="@drawable/spinner_bg" android:paddingTop="6dp" android:paddingBottom="6dp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Notes / Observations" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/notesEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Optional" android:inputType="textMultiLine" android:minLines="3" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="16dp">
+            <com.google.android.material.button.MaterialButton android:id="@+id/saveBtn" android:layout_width="match_parent" android:layout_height="54dp" android:text="Save Session" android:textAllCaps="false" android:textStyle="bold" android:textColor="@android:color/white" app:backgroundTint="@color/brand_green" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/saveAnotherBtn" android:layout_width="match_parent" android:layout_height="54dp" android:text="Save &amp; Add Another" android:textAllCaps="false" android:textStyle="bold" android:textColor="@color/brand_green" app:backgroundTint="@android:color/transparent" app:strokeColor="@color/brand_green" app:strokeWidth="1dp" android:layout_marginTop="8dp" />
+            <TextView android:id="@+id/cancelBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel" android:textStyle="bold" android:textColor="@color/brand_dark" android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

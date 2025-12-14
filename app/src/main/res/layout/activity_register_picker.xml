@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFDFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register Waste Picker"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/brand_dark" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fill basic details of the waste picker"
+            android:textSize="12sp"
+            android:textColor="@color/brand_dark_50"
+            android:layout_marginTop="4dp" />
+
+        <TextView
+            android:id="@+id/note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fields marked * are required."
+            android:textSize="12sp"
+            android:textColor="@color/brand_dark_50"
+            android:layout_marginTop="8dp" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/sectionA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/brand_dark_50"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Basic Information"
+                    android:textStyle="bold"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Full Name*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/fullNameEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="e.g. Sani Musa"
+                        android:drawableStart="@drawable/ic_person"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="@color/brand_dark"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:textColor="@color/brand_dark"
+                        android:textColorHint="@color/brand_dark_50"
+                        android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nickname / Known As"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nicknameEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Optional"
+                        android:textColor="@color/brand_dark"
+                        android:textColorHint="@color/brand_dark_50"
+                        android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Photo"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:id="@+id/photoPreview"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/ic_person"
+                        android:tint="@color/brand_dark" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/choosePhotoBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Choose Photo"
+                        android:textAllCaps="false"
+                        android:layout_marginStart="12dp" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/capturePhotoBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Capture"
+                        android:textAllCaps="false"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/genderMale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:textColor="@color/brand_dark" />
+                    <RadioButton
+                        android:id="@+id/genderFemale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female"
+                        android:textColor="@color/brand_dark"
+                        android:layout_marginStart="16dp" />
+                    <RadioButton
+                        android:id="@+id/genderOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Other"
+                        android:textColor="@color/brand_dark"
+                        android:layout_marginStart="16dp" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Age Range*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <Spinner
+                    android:id="@+id/ageRangeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_bg"
+                    android:popupBackground="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone Number"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phoneEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"
+                        android:hint="Optional"
+                        android:drawableStart="@drawable/ic_phone"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="@color/brand_dark"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        android:textColor="@color/brand_dark"
+                        android:textColorHint="@color/brand_dark_50"
+                        android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="National ID / Any ID"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/idEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Optional"
+                        android:textColor="@color/brand_dark"
+                        android:textColorHint="@color/brand_dark_50"
+                        android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/sectionB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/brand_dark_50"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location &amp; Work Cluster"
+                    android:textStyle="bold"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LGA*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <Spinner
+                    android:id="@+id/lgaSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_bg"
+                    android:popupBackground="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Community / Area*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/communityEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="e.g. Yankaba"
+                        android:textColor="@color/brand_dark"
+                        android:textColorHint="@color/brand_dark_50"
+                        android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cluster / Association Name"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/clusterEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Optional"
+                        android:textColor="@color/brand_dark"
+                        android:textColorHint="@color/brand_dark_50"
+                        android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Primary Collection Location*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <Spinner
+                    android:id="@+id/primaryLocationSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_bg"
+                    android:popupBackground="@android:color/white" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/sectionC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/brand_dark_50"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Work Profile"
+                    android:textStyle="bold"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Types of Waste Collected*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <CheckBox android:id="@+id/cbPlastic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plastic" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbMetal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Metal" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbPaper" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Paper/Cardboard" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbGlass" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Glass" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbOrganic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Organic" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbElectronic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Electronic waste" android:textColor="@color/brand_dark" />
+                    <CheckBox android:id="@+id/cbOtherWaste" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Other" android:textColor="@color/brand_dark" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="How long picking waste?*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <Spinner
+                    android:id="@+id/yearsSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_bg"
+                    android:popupBackground="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="How do they sell materials?"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <RadioButton android:id="@+id/sellDirect" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Directly to recycler" android:textColor="@color/brand_dark" />
+                    <RadioButton android:id="@+id/sellMiddlemen" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Through middlemen" android:textColor="@color/brand_dark" />
+                    <RadioButton android:id="@+id/sellBoth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Both" android:textColor="@color/brand_dark" />
+                    <RadioButton android:id="@+id/sellOther" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Other" android:textColor="@color/brand_dark" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Average Weekly Income"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <Spinner
+                    android:id="@+id/incomeSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_bg"
+                    android:popupBackground="@android:color/white" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/sectionD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/brand_dark_50"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Safety &amp; Formalisation"
+                    android:textStyle="bold"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Do they use PPE while working?*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/ppeAlways" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Always" android:textColor="@color/brand_dark" />
+                    <RadioButton android:id="@+id/ppeSometimes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sometimes" android:textColor="@color/brand_dark" android:layout_marginStart="16dp" />
+                    <RadioButton android:id="@+id/ppeNever" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Never" android:textColor="@color/brand_dark" android:layout_marginStart="16dp" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Have they received any training on waste handling/safety?"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/trainingYes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" android:textColor="@color/brand_dark" />
+                    <RadioButton android:id="@+id/trainingNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:textColor="@color/brand_dark" android:layout_marginStart="16dp" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/trainingProviderRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Who provided the training?"
+                        android:textColor="@color/brand_dark"
+                        android:textSize="12sp" />
+                    <Spinner
+                        android:id="@+id/trainingProviderSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/spinner_bg"
+                        android:popupBackground="@android:color/white" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Interested in joining formal waste system?*"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/joinYes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" android:textColor="@color/brand_dark" />
+                    <RadioButton android:id="@+id/joinNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:textColor="@color/brand_dark" android:layout_marginStart="16dp" />
+                    <RadioButton android:id="@+id/joinNotSure" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Not sure" android:textColor="@color/brand_dark" android:layout_marginStart="16dp" />
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Special Needs / Comments"
+                    android:textColor="@color/brand_dark"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="none">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/specialNeedsEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Optional"
+                        android:inputType="textMultiLine"
+                        android:minLines="3"
+                        android:textColor="@color/brand_dark"
+                        android:textColorHint="@color/brand_dark_50"
+                        android:background="@drawable/spinner_bg" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                app:backgroundTint="@color/brand_green" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveAnotherBtn"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="Save &amp; Register Another"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="@color/brand_green"
+                app:backgroundTint="@android:color/transparent"
+                app:strokeColor="@color/brand_green"
+                app:strokeWidth="1dp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/cancelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:textStyle="bold"
+                android:textColor="@color/brand_dark"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

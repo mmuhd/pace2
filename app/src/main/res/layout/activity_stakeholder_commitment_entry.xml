@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFDFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <ImageView android:id="@+id/backButton" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_arrow_back" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stakeholder Commitment Entry" android:textStyle="bold" android:textSize="20sp" android:textColor="@color/brand_dark" android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Record commitments made during engagements" android:textSize="12sp" android:textColor="@color/brand_dark_50" android:layout_marginTop="4dp" />
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section A – Stakeholder Profile" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stakeholder Name*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="outline" app:boxStrokeColor="@color/brand_dark_50" app:boxStrokeWidth="1dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/stakeholderNameEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. Education Board" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stakeholder Type*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/stakeholderTypeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LGA*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/lgaSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Contact Person (optional)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="outline" app:boxStrokeColor="@color/brand_dark_50" app:boxStrokeWidth="1dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/contactPersonEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. Malam Auwalu – Director Waste Ops" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Phone Number (optional)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="outline" app:boxStrokeColor="@color/brand_dark_50" app:boxStrokeWidth="1dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/phoneEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone" android:hint="e.g. 0803 123 4567" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section B – Engagement Details" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Date Engaged*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <TextView android:id="@+id/engagementDateText" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tap to select date" android:textColor="@color/brand_dark_50" android:textSize="14sp" android:background="@drawable/spinner_bg" android:paddingTop="6dp" android:paddingBottom="6dp" android:paddingStart="10dp" android:paddingEnd="10dp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Engagement Type*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/engagementTypeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Engaged By*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <TextView android:id="@+id/engagedByText" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark" android:textSize="14sp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Brief Description (optional)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="outline" app:boxStrokeColor="@color/brand_dark_50" app:boxStrokeWidth="1dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/engagementDescEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine" android:minLines="2" android:hint="Optional notes about engagement" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section C – Commitment Details" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Commitment Made*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="outline" app:boxStrokeColor="@color/brand_dark_50" app:boxStrokeWidth="1dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/commitmentTextEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine" android:minLines="3" android:hint="Describe commitment" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Category of Commitment (optional)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/commitmentCategorySpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Due Date (if applicable)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <TextView android:id="@+id/dueDateText" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tap to select date" android:textColor="@color/brand_dark_50" android:textSize="14sp" android:background="@drawable/spinner_bg" android:paddingTop="6dp" android:paddingBottom="6dp" android:paddingStart="10dp" android:paddingEnd="10dp" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Priority Level (optional)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/prioritySpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section D – Follow-Up &amp; Status" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Action Taken (so far)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="outline" app:boxStrokeColor="@color/brand_dark_50" app:boxStrokeWidth="1dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/actionTakenEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textMultiLine" android:minLines="2" android:hint="e.g. Presented at meeting" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Status*" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <Spinner android:id="@+id/statusSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Follow-Up Required?" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <RadioButton android:id="@+id/followYes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Yes" android:textColor="@color/brand_dark" />
+                    <RadioButton android:id="@+id/followNo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No" android:textColor="@color/brand_dark" android:layout_marginStart="20dp" />
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/followFields" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Follow-up Type" android:textColor="@color/brand_dark" android:textSize="12sp" />
+                    <Spinner android:id="@+id/followTypeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Follow-up Date" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                    <TextView android:id="@+id/followDateText" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tap to select date" android:textColor="@color/brand_dark_50" android:textSize="14sp" android:background="@drawable/spinner_bg" android:paddingTop="6dp" android:paddingBottom="6dp" android:paddingStart="10dp" android:paddingEnd="10dp" />
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Assigned To" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <Spinner android:id="@+id/assignedSpinner" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+                        <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:boxBackgroundMode="outline" app:boxStrokeColor="@color/brand_dark_50" app:boxStrokeWidth="1dp">
+                            <com.google.android.material.textfield.TextInputEditText android:id="@+id/assignedOtherEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Enter name if Other" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Remarks" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="outline" app:boxStrokeColor="@color/brand_dark_50" app:boxStrokeWidth="1dp">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/remarksEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Optional notes" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Section E – Evidence (Optional)" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+                    <ImageView android:id="@+id/evidencePreview1" android:layout_width="64dp" android:layout_height="64dp" android:src="@drawable/ic_person" android:background="@android:color/transparent" />
+                    <ImageView android:id="@+id/evidencePreview2" android:layout_width="64dp" android:layout_height="64dp" android:src="@drawable/ic_person" android:layout_marginStart="8dp" />
+                    <ImageView android:id="@+id/evidencePreview3" android:layout_width="64dp" android:layout_height="64dp" android:src="@drawable/ic_person" android:layout_marginStart="8dp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+                    <com.google.android.material.button.MaterialButton android:id="@+id/chooseFileBtn1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Choose File 1" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/chooseFileBtn2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Choose File 2" android:layout_marginStart="8dp" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/chooseFileBtn3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Choose File 3" android:layout_marginStart="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="12dp">
+            <com.google.android.material.button.MaterialButton android:id="@+id/saveBtn" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Save Commitment" android:backgroundTint="#03C03C" android:textColor="@android:color/white" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/saveAnotherBtn" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Save &amp; Add Another" android:layout_marginStart="8dp" />
+        </LinearLayout>
+        <TextView android:id="@+id/cancelBtn" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cancel" android:textColor="@color/brand_dark" android:textSize="12sp" android:gravity="center" android:padding="8dp" />
+    </LinearLayout>
+</ScrollView>

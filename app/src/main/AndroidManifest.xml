@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:label="@string/app_name"
+        android:theme="@style/Theme.CleanCall">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RoleSelectActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterPickerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PickerListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PickerProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RecordsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterWomenTrainingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WomenTrainingListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WomenTrainingProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SchoolWasteBankEntryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SchoolWasteBankListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SchoolWasteBankProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WasteAggregationEntryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WasteAggregationListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WasteAggregationProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StakeholderCommitmentEntryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StakeholderCommitmentListActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StakeholderCommitmentProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AddActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReportsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReportWastePickersActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReportWomenTrainingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReportSchoolWasteBanksActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReportWasteAggregationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ReportStakeholderCommitmentsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

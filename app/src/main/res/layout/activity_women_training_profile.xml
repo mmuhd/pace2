@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FCFDFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_arrow_back" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
+                <TextView
+                    android:id="@+id/profileTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/brand_dark"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/profileMeta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/brand_dark_50"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/brand_dark_50"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Session Details" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Date" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Time" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueTime" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LGA / Community" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueLgaCommunity" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Venue" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueVenue" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Facilitator" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueFacilitator" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Organisation" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueOrganisation" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Session Code" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueSessionCode" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/brand_dark_50"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Participant Summary" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Women" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueTotalWomen" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Age Breakdown" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueAgeBreakdown" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Households Represented" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueHouseholds" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Attendance Type" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueAttendance" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/brand_dark_50"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Training Content &amp; Method" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Topics" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueTopics" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Methods" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueMethods" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Duration" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueDuration" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/brand_dark_50"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pre/Post Test Summary" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Used Pre/Post Test" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valuePreUsed" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <LinearLayout android:id="@+id/preSection" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="# Correct understanding of ‘Waste Sorting’" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                    <TextView android:id="@+id/valueKnow" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="# Can name 3 waste categories" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                    <TextView android:id="@+id/valueCats" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Burning is false" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                    <TextView android:id="@+id/valueBurn" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Confidence (1–5)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                    <TextView android:id="@+id/valueConfidence" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Importance (1–5)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                    <TextView android:id="@+id/valueImportance" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/brand_dark_50"
+            app:strokeWidth="1dp"
+            app:cardBackgroundColor="@android:color/white"
+            android:layout_marginTop="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Adoption &amp; Follow-Up" android:textStyle="bold" android:textColor="@color/brand_dark" android:textSize="16sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Committed to sorting" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueCommitted" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Follow-up Plan" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueFollowup" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Follow-up Date" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueFollowupDate" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Notes" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp"/>
+                <TextView android:id="@+id/valueNotes" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="14sp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>
