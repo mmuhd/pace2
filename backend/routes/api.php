@@ -17,6 +17,7 @@ Route::middleware('api')->group(function () {
     Route::apiResource('aggregations', WasteAggregationController::class)->only(['index','show']);
     Route::get('reports/overview', [ReportController::class, 'overview']);
     Route::post('auth/login', [AuthController::class, 'login']);
+    Route::post('auth/register', [AuthController::class, 'register']);
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('auth/me', [AuthController::class, 'me']);
         Route::post('auth/logout', [AuthController::class, 'logout']);

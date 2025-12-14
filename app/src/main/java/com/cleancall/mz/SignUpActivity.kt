@@ -22,6 +22,7 @@ class SignUpActivity : AppCompatActivity() {
         val phoneEdit: TextView = findViewById(R.id.phoneEdit)
         val passwordEdit: TextView = findViewById(R.id.passwordEdit)
         val confirmEdit: TextView = findViewById(R.id.confirmEdit)
+        val loginLink: TextView = findViewById(R.id.loginLinkOnSignup)
 
         val lgas = listOf(
             "Select LGA",
@@ -45,6 +46,10 @@ class SignUpActivity : AppCompatActivity() {
         spinnerLga.adapter = lgaAdapter
 
         back.setOnClickListener { finish() }
+        loginLink.setOnClickListener {
+            startActivity(android.content.Intent(this, LoginActivity::class.java))
+            finish()
+        }
         proceed.setOnClickListener {
             val name = nameEdit.text?.toString()?.trim().orEmpty()
             val phone = phoneEdit.text?.toString()?.trim().orEmpty()
@@ -81,6 +86,7 @@ class SignUpActivity : AppCompatActivity() {
                 .putString("signup_phone", phone)
                 .putString("signup_email", email)
                 .putString("signup_lga", lga)
+                .putString("signup_password", pass)
                 .apply()
 
             startActivity(android.content.Intent(this, RoleSelectActivity::class.java))

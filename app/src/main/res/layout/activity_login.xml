@@ -22,7 +22,7 @@
         android:id="@+id/phoneLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
+        android:text="Phone number"
         android:textColor="@color/brand_dark"
         android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@id/loginTitle"
@@ -43,10 +43,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phoneEdit"
-            android:inputType="textEmailAddress"
+            android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="e.g. user@example.com"
+            android:hint="e.g. 0803 000 0000"
             android:drawableStart="@drawable/ic_phone"
             android:drawablePadding="8dp"
             android:drawableTint="@color/brand_dark"
@@ -57,17 +57,7 @@
             android:background="@drawable/spinner_bg" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:id="@+id/phoneDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/brand_dark_50"
-        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="8dp" />
+    
 
     <TextView
         android:id="@+id/passwordLabel"
@@ -76,7 +66,7 @@
         android:text="Password"
         android:textColor="@color/brand_dark"
         android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/phoneDivider"
+        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp" />
@@ -109,17 +99,7 @@
             android:background="@drawable/spinner_bg" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:id="@+id/passwordDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/brand_dark_50"
-        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="8dp" />
+    
 
     <TextView
         android:id="@+id/forgotPassword"
@@ -129,7 +109,7 @@
         android:textColor="@color/brand_green"
         android:textStyle="bold"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/passwordDivider"
+        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="12dp" />

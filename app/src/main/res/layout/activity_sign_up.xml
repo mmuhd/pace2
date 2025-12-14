@@ -79,17 +79,7 @@
         android:background="@drawable/spinner_bg" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:id="@+id/nameDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/brand_dark_50"
-        app:layout_constraintTop_toBottomOf="@id/nameInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="2dp" />
+    
 
     <TextView
         android:id="@+id/emailLabel"
@@ -98,7 +88,7 @@
         android:text="Email (optional)"
         android:textColor="@color/brand_dark"
         android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/phoneDivider"
+        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
         app:layout_constraintStart_toStartOf="@id/brandLabel"
         android:layout_marginTop="6dp" />
 
@@ -129,17 +119,7 @@
         android:background="@drawable/spinner_bg" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:id="@+id/emailDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/brand_dark_50"
-        app:layout_constraintTop_toBottomOf="@id/emailInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="2dp" />
+    
 
     <TextView
         android:id="@+id/phoneLabel"
@@ -148,7 +128,7 @@
         android:text="Phone number"
         android:textColor="@color/brand_dark"
         android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/nameDivider"
+        app:layout_constraintTop_toBottomOf="@id/nameInputLayout"
         app:layout_constraintStart_toStartOf="@id/brandLabel"
         android:layout_marginTop="6dp" />
 
@@ -179,17 +159,7 @@
         android:background="@drawable/spinner_bg" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:id="@+id/phoneDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/brand_dark_50"
-        app:layout_constraintTop_toBottomOf="@id/phoneInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="2dp" />
+    
 
     <TextView
         android:id="@+id/passwordLabel"
@@ -198,7 +168,7 @@
         android:text="Password"
         android:textColor="@color/brand_dark"
         android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/phoneDivider"
+        app:layout_constraintTop_toBottomOf="@id/emailInputLayout"
         app:layout_constraintStart_toStartOf="@id/brandLabel"
         android:layout_marginTop="6dp" />
 
@@ -230,17 +200,7 @@
         android:background="@drawable/spinner_bg" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:id="@+id/passwordDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/brand_dark_50"
-        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="2dp" />
+    
 
     <TextView
         android:id="@+id/confirmLabel"
@@ -249,7 +209,7 @@
         android:text="Confirm password"
         android:textColor="@color/brand_dark"
         android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/passwordDivider"
+        app:layout_constraintTop_toBottomOf="@id/passwordInputLayout"
         app:layout_constraintStart_toStartOf="@id/brandLabel"
         android:layout_marginTop="6dp" />
 
@@ -281,17 +241,7 @@
         android:background="@drawable/spinner_bg" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:id="@+id/confirmDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/brand_dark_50"
-        app:layout_constraintTop_toBottomOf="@id/confirmInputLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="2dp" />
+    
 
     <TextView
         android:id="@+id/lgaLabel"
@@ -300,7 +250,7 @@
         android:text="LGA"
         android:textColor="@color/brand_dark"
         android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/confirmDivider"
+        app:layout_constraintTop_toBottomOf="@id/confirmInputLayout"
         app:layout_constraintStart_toStartOf="@id/brandLabel"
         android:layout_marginTop="6dp" />
 
@@ -317,17 +267,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp" />
 
-    <View
-        android:id="@+id/lgaDivider"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="@color/brand_dark_50"
-        app:layout_constraintTop_toBottomOf="@id/spinnerLga"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="4dp" />
+    
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/proceedButton"
@@ -342,7 +282,7 @@
         app:iconGravity="textEnd"
         app:iconPadding="8dp"
         app:backgroundTint="@color/brand_green"
-        app:layout_constraintTop_toBottomOf="@id/lgaDivider"
+        app:layout_constraintTop_toBottomOf="@id/spinnerLga"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="24dp"
@@ -363,4 +303,16 @@
         android:layout_marginStart="3dp"
         android:layout_marginEnd="3dp" />
 
+    <TextView
+        android:id="@+id/loginLinkOnSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an account? Login"
+        android:textColor="@color/brand_green"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/proceedButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="12dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

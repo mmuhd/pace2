@@ -20,14 +20,14 @@ class LoginActivity : AppCompatActivity() {
 
         val client = OkHttpClient.Builder().build()
         val loginBtn = findViewById<MaterialButton>(R.id.loginButton)
-        val emailEdit = findViewById<TextInputEditText>(R.id.phoneEdit)
+        val phoneEdit = findViewById<TextInputEditText>(R.id.phoneEdit)
         val passwordEdit = findViewById<TextInputEditText>(R.id.passwordEdit)
 
         loginBtn.setOnClickListener {
-            val email = emailEdit.text?.toString()?.trim().orEmpty()
+            val phone = phoneEdit.text?.toString()?.trim().orEmpty()
             val password = passwordEdit.text?.toString()?.trim().orEmpty()
-            if (email.isEmpty() || password.isEmpty()) {
-                android.widget.Toast.makeText(this, "Enter email and password", android.widget.Toast.LENGTH_SHORT).show()
+            if (phone.isEmpty() || password.isEmpty()) {
+                android.widget.Toast.makeText(this, "Enter phone and password", android.widget.Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             loginBtn.isEnabled = false
@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
                 val prefs = getSharedPreferences("clean_call", MODE_PRIVATE)
                 val base = prefs.getString("api_base_url", BuildConfig.BASE_URL) ?: BuildConfig.BASE_URL
                 val url = (if (base.endsWith("/")) base.dropLast(1) else base) + "/auth/login"
-                val payload = JSONObject(mapOf("email" to email, "password" to password)).toString()
+                val payload = JSONObject(mapOf("phone" to phone, "password" to password)).toString()
                 val body: RequestBody = payload.toRequestBody("application/json; charset=utf-8".toMediaType())
                 val req = Request.Builder().url(url).post(body).addHeader("Accept", "application/json").build()
                 val ok = try {
@@ -45,7 +45,16 @@ class LoginActivity : AppCompatActivity() {
                         val json = JSONObject(s)
                         val token = json.optString("token")
                         if (token.isNotEmpty()) {
-                            prefs.edit().putString("api_token", token).apply()
+                            val user = json.optJSONObject("user")
+                            val name = user?.optString("name") ?: "User"
+                            val lga = user?.optString("lga") ?: "LGA"
+                            val role = user?.optString("role") ?: ""
+                            prefs.edit()
+                                .putString("api_token", token)
+                                .putString("user_name", name)
+                                .putString("user_lga", lga)
+                                .putString("user_role", role)
+                                .apply()
                         }
                         true
                     } else false
