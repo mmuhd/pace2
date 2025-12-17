@@ -72,5 +72,8 @@ class LoginActivity : AppCompatActivity() {
         }
         findViewById<android.widget.TextView>(R.id.forgotPassword).setOnClickListener {
         }
+        findViewById<android.widget.TextView>(R.id.signupLinkOnLogin).setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
+        }
     }
 }

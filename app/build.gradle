@@ -11,7 +11,7 @@ android {
         targetSdk 34
         versionCode 1
         versionName "1.0"
-        buildConfigField 'String', 'BASE_URL', '"http://10.0.2.2:8000/api"'
+        buildConfigField 'String', 'BASE_URL', '"https://cleancall.verp.ng/api"'
     }
 
     buildFeatures {
@@ -30,7 +30,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField 'String', 'BASE_URL', '"http://10.0.2.2:8000/api"'
+            buildConfigField 'String', 'BASE_URL', '"https://cleancall.verp.ng/api"'
         }
         release {
             buildConfigField 'String', 'BASE_URL', '"https://cleancall.verp.ng/api"'

@@ -303,7 +303,18 @@ class RegisterPickerActivity : AppCompatActivity() {
             saveBtn.isEnabled = false
             saveAnotherBtn.isEnabled = false
             Thread {
-                val ok = try { ApiClient.postWastePicker(this, picker) } catch (_: Exception) { false }
+                var status = -1
+                var body = ""
+                var error = ""
+                val prefs2 = getSharedPreferences("clean_call", MODE_PRIVATE)
+                val base = prefs2.getString("api_base_url", BuildConfig.BASE_URL) ?: BuildConfig.BASE_URL
+                val token = prefs2.getString("api_token", null)
+                val ok = try {
+                    val res = ApiClient.postWastePickerResponse(this, picker)
+                    status = res.first
+                    body = res.second
+                    status in 200..299
+                } catch (e: Exception) { error = e.message ?: ""; false }
                 runOnUiThread {
                     saveBtn.isEnabled = true
                     saveAnotherBtn.isEnabled = true
@@ -320,10 +331,10 @@ class RegisterPickerActivity : AppCompatActivity() {
                             .setNegativeButton("Register Another") { dlg, _ -> dlg.dismiss(); clearForm() }
                             .show()
                     } else {
-                        PickerStore.save(this, picker)
+                        PickerStore.savePending(this, picker)
                         MaterialAlertDialogBuilder(this)
                             .setTitle("Saved locally due to network/auth issue.")
-                            .setMessage("Choose next action")
+                            .setMessage("Status: " + status + "\nToken present: " + (!token.isNullOrEmpty()) + "\nBase: " + base + "\nBody: " + body.take(300) + "\nError: " + error)
                             .setPositiveButton("View Profile") { dlg, _ ->
                                 dlg.dismiss()
                                 val intent = android.content.Intent(this, PickerProfileActivity::class.java)
@@ -401,17 +412,33 @@ class RegisterPickerActivity : AppCompatActivity() {
             saveBtn.isEnabled = false
             saveAnotherBtn.isEnabled = false
             Thread {
-                val ok = try { ApiClient.postWastePicker(this, picker) } catch (_: Exception) { false }
+                var status = -1
+                var body = ""
+                var error = ""
+                val prefs2 = getSharedPreferences("clean_call", MODE_PRIVATE)
+                val base = prefs2.getString("api_base_url", BuildConfig.BASE_URL) ?: BuildConfig.BASE_URL
+                val token = prefs2.getString("api_token", null)
+                val ok = try {
+                    val res = ApiClient.postWastePickerResponse(this, picker)
+                    status = res.first
+                    body = res.second
+                    status in 200..299
+                } catch (e: Exception) { error = e.message ?: ""; false }
                 runOnUiThread {
                     saveBtn.isEnabled = true
                     saveAnotherBtn.isEnabled = true
                     if (ok) {
-                        Toast.makeText(this, "Waste picker registered successfully.", Toast.LENGTH_SHORT).show()
-                        clearForm()
+                        MaterialAlertDialogBuilder(this)
+                            .setTitle("Waste picker registered successfully.")
+                            .setPositiveButton("OK") { dlg, _ -> dlg.dismiss(); clearForm() }
+                            .show()
                     } else {
-                        PickerStore.save(this, picker)
-                        Toast.makeText(this, "Saved locally due to network/auth issue.", Toast.LENGTH_SHORT).show()
-                        clearForm()
+                        PickerStore.savePending(this, picker)
+                        MaterialAlertDialogBuilder(this)
+                            .setTitle("Saved locally due to network/auth issue.")
+                            .setMessage("Status: " + status + "\nToken present: " + (!token.isNullOrEmpty()) + "\nBase: " + base + "\nBody: " + body.take(300) + "\nError: " + error)
+                            .setPositiveButton("OK") { dlg, _ -> dlg.dismiss(); clearForm() }
+                            .show()
                     }
                 }
             }.start()

@@ -24,7 +24,7 @@
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Account" android:textColor="@color/brand_dark" android:textStyle="bold" android:textSize="16sp" />
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Full name" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
                 <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
-                    <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="wrap_content" />
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/accountNameEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.button.MaterialButton android:id="@+id/logoutBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Logout" android:textAllCaps="false" android:layout_marginTop="8dp" app:cornerRadius="8dp" style="@style/Widget.MaterialComponents.Button" android:backgroundTint="@color/brand_dark" android:textColor="@android:color/white" />
             </LinearLayout>
@@ -34,9 +34,9 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Language &amp; Accessibility" android:textColor="@color/brand_dark" android:textStyle="bold" android:textSize="16sp" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Language" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
-                <Spinner android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+                <Spinner android:id="@+id/languageSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Text size" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
-                <Spinner android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+                <Spinner android:id="@+id/textSizeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -45,13 +45,14 @@
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Data &amp; Sync" android:textColor="@color/brand_dark" android:textStyle="bold" android:textSize="16sp" />
                 <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Offline mode" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
                 <Switch android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                <com.google.android.material.button.MaterialButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sync now" android:textAllCaps="false" android:layout_marginTop="8dp" app:cornerRadius="8dp" style="@style/Widget.MaterialComponents.Button" android:backgroundTint="@color/brand_green" android:textColor="@android:color/white" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/syncNowBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sync now" android:textAllCaps="false" android:layout_marginTop="8dp" app:cornerRadius="8dp" style="@style/Widget.MaterialComponents.Button" android:backgroundTint="@color/brand_green" android:textColor="@android:color/white" />
+                <ProgressBar android:id="@+id/syncProgress" android:layout_width="24dp" android:layout_height="24dp" android:layout_marginTop="8dp" android:indeterminate="true" android:visibility="gone" />
 
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Backend API URL" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="12dp" />
-                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Backend API URL" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="12dp" android:visibility="gone" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none" android:visibility="gone">
                     <com.google.android.material.textfield.TextInputEditText android:id="@+id/apiBaseUrlEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="e.g. http://10.0.2.2:8000/api" android:background="@drawable/spinner_bg" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.button.MaterialButton android:id="@+id/saveApiBaseUrlBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Save API URL" android:textAllCaps="false" android:layout_marginTop="8dp" app:cornerRadius="8dp" style="@style/Widget.MaterialComponents.Button" android:backgroundTint="@color/brand_dark" android:textColor="@android:color/white" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/saveApiBaseUrlBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Save API URL" android:textAllCaps="false" android:layout_marginTop="8dp" app:cornerRadius="8dp" style="@style/Widget.MaterialComponents.Button" android:backgroundTint="@color/brand_dark" android:textColor="@android:color/white" android:visibility="gone" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -74,7 +75,7 @@
         <com.google.android.material.card.MaterialCardView android:id="@+id/sectionSupport" android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12dp" app:strokeColor="@color/brand_dark_50" app:strokeWidth="1dp" app:cardBackgroundColor="@android:color/white" android:layout_marginTop="12dp" android:layout_marginBottom="24dp">
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Support" android:textColor="@color/brand_dark" android:textStyle="bold" android:textSize="16sp" />
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Contact support: +234-XXX-XXXX" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CleanCall: 07036988689" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

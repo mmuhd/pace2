@@ -4,8 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.EditText
+import android.widget.Spinner
+import android.widget.ArrayAdapter
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,11 +21,11 @@ class SettingsActivity : AppCompatActivity() {
         findViewById<View>(R.id.backButton).setOnClickListener { finish() }
 
         val prefs = getSharedPreferences("clean_call", MODE_PRIVATE)
-        val role = prefs.getString("pending_role", "") ?: ""
-        val name = prefs.getString("signup_name", "User") ?: "User"
-        val lga = prefs.getString("signup_lga", "LGA") ?: "LGA"
+        val role = prefs.getString("user_role", prefs.getString("pending_role", "") ?: "") ?: ""
+        val name = prefs.getString("user_name", prefs.getString("signup_name", "User") ?: "User") ?: "User"
+        val lga = prefs.getString("user_lga", prefs.getString("signup_lga", "LGA") ?: "LGA") ?: "LGA"
         findViewById<TextView>(R.id.profileName).text = name
-        findViewById<TextView>(R.id.profileMeta).text = "$lga"
+        findViewById<TextView>(R.id.profileMeta).text = "$lga • $role"
 
         val sectionAccount: View = findViewById(R.id.sectionAccount)
         val sectionLanguage: View = findViewById(R.id.sectionLanguage)
@@ -56,24 +62,134 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         findViewById<MaterialButton>(R.id.logoutBtn)?.setOnClickListener {
-            prefs.edit().remove("pending_role").apply()
-            finish()
+            val btn = it as MaterialButton
+            btn.isEnabled = false
+            Thread {
+                val token = prefs.getString("api_token", null)
+                if (!token.isNullOrEmpty()) {
+                    val client = OkHttpClient.Builder().build()
+                    val base = prefs.getString("api_base_url", BuildConfig.BASE_URL) ?: BuildConfig.BASE_URL
+                    val url = (if (base.endsWith("/")) base.dropLast(1) else base) + "/auth/logout"
+                    val req = Request.Builder()
+                        .url(url)
+                        .post(okhttp3.RequestBody.create(null, ByteArray(0)))
+                        .addHeader("Accept","application/json")
+                        .addHeader("Authorization","Bearer $token")
+                        .build()
+                    try { client.newCall(req).execute() } catch (_: Exception) {}
+                }
+                runOnUiThread {
+                    prefs.edit()
+                        .remove("api_token")
+                        .remove("user_name")
+                        .remove("user_lga")
+                        .remove("user_role")
+                        .remove("pending_role")
+                        .remove("signup_name")
+                        .remove("signup_lga")
+                        .remove("signup_email")
+                        .remove("signup_phone")
+                        .remove("signup_password")
+                        .remove("invitation_code")
+                        .apply()
+                    val intent = android.content.Intent(this, MainActivity::class.java)
+                    intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    startActivity(intent)
+                    finish()
+                }
+            }.start()
         }
 
-        val apiEdit = findViewById<EditText>(R.id.apiBaseUrlEdit)
-        val saveApiBtn = findViewById<MaterialButton>(R.id.saveApiBaseUrlBtn)
-        if (apiEdit != null && saveApiBtn != null) {
-            val current = prefs.getString("api_base_url", BuildConfig.BASE_URL) ?: BuildConfig.BASE_URL
-            apiEdit.setText(current)
-            saveApiBtn.setOnClickListener {
-                val v = apiEdit.text?.toString()?.trim() ?: ""
-                val clean = if (v.endsWith("/")) v.dropLast(1) else v
-                if (clean.isNotEmpty()) {
-                    prefs.edit().putString("api_base_url", clean).apply()
-                    android.widget.Toast.makeText(this, "API URL saved", android.widget.Toast.LENGTH_SHORT).show()
-                } else {
-                    android.widget.Toast.makeText(this, "Enter a valid API URL", android.widget.Toast.LENGTH_SHORT).show()
+        val langSpinner = findViewById<Spinner>(R.id.languageSpinner)
+        val sizeSpinner = findViewById<Spinner>(R.id.textSizeSpinner)
+        if (langSpinner != null) {
+            val langs = listOf("English")
+            val adapter = ArrayAdapter(this, R.layout.spinner_item, langs)
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+            langSpinner.adapter = adapter
+            langSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                    prefs.edit().putString("pref_lang", langs[position]).apply()
                 }
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
+        }
+        if (sizeSpinner != null) {
+            val sizes = listOf("Small", "Medium", "Large")
+            val adapter = ArrayAdapter(this, R.layout.spinner_item, sizes)
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+            sizeSpinner.adapter = adapter
+            val currentSize = prefs.getString("pref_text_size", "Medium")
+            val idx = sizes.indexOf(currentSize)
+            var initializingSize = true
+            if (idx >= 0) sizeSpinner.setSelection(idx)
+            sizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                    if (initializingSize) { initializingSize = false; return }
+                    prefs.edit().putString("pref_text_size", sizes[position]).apply()
+                    val scale = when (sizes[position]) { "Small" -> 0.85f; "Large" -> 1.15f; else -> 1.0f }
+                    val res = resources
+                    val config = android.content.res.Configuration(res.configuration)
+                    config.fontScale = scale
+                    res.updateConfiguration(config, res.displayMetrics)
+                    recreate()
+                }
+                override fun onNothingSelected(parent: AdapterView<*>) {}
+            }
+        }
+
+        findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.accountNameEdit)?.setText(name)
+
+        val syncBtn = findViewById<com.google.android.material.button.MaterialButton>(R.id.syncNowBtn)
+        val syncProgress = findViewById<View>(R.id.syncProgress)
+        if (syncBtn != null && syncProgress != null) {
+            syncBtn.setOnClickListener {
+                syncBtn.isEnabled = false
+                syncProgress.visibility = View.VISIBLE
+                Thread {
+                    val prefs2 = getSharedPreferences("clean_call", MODE_PRIVATE)
+                    val token = prefs2.getString("api_token", null)
+                    if (token.isNullOrEmpty()) {
+                        runOnUiThread {
+                            syncProgress.visibility = View.GONE
+                            syncBtn.isEnabled = true
+                            Toast.makeText(this, "Login required to sync", Toast.LENGTH_SHORT).show()
+                        }
+                        return@Thread
+                    }
+                    try {
+                        val base = prefs2.getString("api_base_url", BuildConfig.BASE_URL) ?: BuildConfig.BASE_URL
+                        val url = (if (base.endsWith("/")) base.dropLast(1) else base) + "/auth/me"
+                        val req = Request.Builder().url(url).get().addHeader("Accept","application/json").addHeader("Authorization","Bearer $token").build()
+                        val client = OkHttpClient.Builder().build()
+                        val resp = client.newCall(req).execute()
+                        if (!resp.isSuccessful) {
+                            runOnUiThread {
+                                syncProgress.visibility = View.GONE
+                                syncBtn.isEnabled = true
+                                Toast.makeText(this, "Login required to sync", Toast.LENGTH_SHORT).show()
+                            }
+                            return@Thread
+                        }
+                    } catch (_: Exception) {}
+                    var count = 0
+                    try { PickerStore.migrateLegacyLocalToPending(this) } catch (_: Exception) {}
+                    try { count = PickerStore.syncPending(this) } catch (_: Exception) {}
+                    val log = PickerStore.getSyncLog(this)
+                    runOnUiThread {
+                        syncProgress.visibility = View.GONE
+                        syncBtn.isEnabled = true
+                        if (count == 0 && log.isNotBlank()) {
+                            androidx.appcompat.app.AlertDialog.Builder(this)
+                                .setTitle("Sync details")
+                                .setMessage(log)
+                                .setPositiveButton("OK", null)
+                                .show()
+                        } else {
+                            Toast.makeText(this, "Synced $count pending records", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }.start()
             }
         }
     }

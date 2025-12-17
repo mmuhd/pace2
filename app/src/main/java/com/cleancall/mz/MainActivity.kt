@@ -7,6 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val prefs = getSharedPreferences("clean_call", MODE_PRIVATE)
+        val token = prefs.getString("api_token", null)
+        if (!token.isNullOrEmpty()) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+            return
+        }
         setContentView(R.layout.activity_main)
 
         findViewById<com.google.android.material.button.MaterialButton>(R.id.joinButton).setOnClickListener {

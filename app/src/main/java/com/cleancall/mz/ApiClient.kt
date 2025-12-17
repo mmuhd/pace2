@@ -436,6 +436,72 @@ object ApiClient {
         return resp.isSuccessful
     }
 
+    fun postWastePickerStatus(context: Context, p: WastePicker): Int {
+        val url = baseUrl(context) + "/pickers"
+        val json = JSONObject().apply {
+            put("full_name", p.fullName)
+            put("nickname", p.nickname)
+            put("gender", p.gender)
+            put("age_range", p.ageRange)
+            put("phone", p.phone)
+            put("id_number", p.idNumber)
+            put("lga", p.lga)
+            put("community", p.community)
+            put("cluster_name", p.clusterName)
+            put("primary_location", p.primaryLocation)
+            put("waste_types", JSONArray(p.wasteTypes))
+            put("years_experience", p.yearsExperience)
+            put("selling_mode", p.sellingMode)
+            put("income_range", p.incomeRange)
+            put("ppe_usage", p.ppeUsage)
+            put("had_training", p.hadTraining)
+            put("training_provider", p.trainingProvider)
+            put("willing_to_join", p.willingToJoin)
+            put("special_needs", p.specialNeeds)
+            put("photo_base64", p.photoBase64)
+        }.toString()
+        val body: RequestBody = json.toRequestBody("application/json; charset=utf-8".toMediaType())
+        val reqBuilder = Request.Builder().url(url).post(body).addHeader("Accept", "application/json")
+        val token = authToken(context)
+        if (!token.isNullOrEmpty()) reqBuilder.addHeader("Authorization", "Bearer $token")
+        val resp = client.newCall(reqBuilder.build()).execute()
+        return resp.code
+    }
+
+    fun postWastePickerResponse(context: Context, p: WastePicker): Pair<Int, String> {
+        val url = baseUrl(context) + "/pickers"
+        val json = JSONObject().apply {
+            put("full_name", p.fullName)
+            put("nickname", p.nickname)
+            put("gender", p.gender)
+            put("age_range", p.ageRange)
+            put("phone", p.phone)
+            put("id_number", p.idNumber)
+            put("lga", p.lga)
+            put("community", p.community)
+            put("cluster_name", p.clusterName)
+            put("primary_location", p.primaryLocation)
+            put("waste_types", JSONArray(p.wasteTypes))
+            put("years_experience", p.yearsExperience)
+            put("selling_mode", p.sellingMode)
+            put("income_range", p.incomeRange)
+            put("ppe_usage", p.ppeUsage)
+            put("had_training", p.hadTraining)
+            put("training_provider", p.trainingProvider)
+            put("willing_to_join", p.willingToJoin)
+            put("special_needs", p.specialNeeds)
+            put("photo_base64", p.photoBase64)
+        }.toString()
+        val body: RequestBody = json.toRequestBody("application/json; charset=utf-8".toMediaType())
+        val reqBuilder = Request.Builder().url(url).post(body).addHeader("Accept", "application/json")
+        val token = authToken(context)
+        if (!token.isNullOrEmpty()) reqBuilder.addHeader("Authorization", "Bearer $token")
+        val resp = client.newCall(reqBuilder.build()).execute()
+        val status = resp.code
+        val s = try { resp.body?.string().orEmpty() } catch (_: Exception) { "" }
+        return status to s
+    }
+
     fun fetchWastePickers(context: Context): List<WastePicker> {
         val url = baseUrl(context) + "/pickers?per_page=100"
         val req = Request.Builder().url(url).get().addHeader("Accept", "application/json").build()
