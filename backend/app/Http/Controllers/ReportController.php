@@ -79,6 +79,7 @@ class ReportController extends Controller
         $evacToday = EvacuationTask::whereDate('created_at', now()->toDateString())->count();
         $evacContamAvg = $evacs->filter(fn($t)=>!is_null($t->contamination_score))->avg('contamination_score');
 
+        $pendingByLga = $evacs->where('status','pending')->groupBy('lga')->map->count()->map(function ($v, $k) { return ['lga'=>$k, 'pending'=>$v]; })->values();
         $out = [
             'kpis' => [
                 'evac_pickups_today' => $evacToday,
@@ -89,6 +90,7 @@ class ReportController extends Controller
             'insights' => [
                 'top_lgas_by_waste' => $topLgas,
                 'top_schools_plastics' => $topSchoolsPlastics,
+                'evac_pending_by_lga' => $pendingByLga,
             ],
         ];
         if ($source) {

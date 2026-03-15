@@ -78,25 +78,11 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
                 val lines = mutableListOf<String>()
-                val recentPickers = try { ApiClient.fetchWastePickers(this) } catch (_: Exception) { emptyList() }
-                for (i in 0 until kotlin.math.min(3, recentPickers.size)) {
-                    val p = recentPickers[i]
-                    lines.add("• ${p.fullName} registered in ${p.lga}")
-                }
-                val recentAgg = try { ApiClient.fetchWasteAggregations(this) } catch (_: Exception) { emptyList() }
-                for (i in 0 until kotlin.math.min(2, recentAgg.size)) {
-                    val a = recentAgg[i]
-                    lines.add("• ${String.format("%.0f", a.totalWasteKg)} kg collected at ${a.siteName}")
-                }
-                val recentWomen = try { ApiClient.fetchWomenTrainingSessions(this) } catch (_: Exception) { emptyList() }
-                for (i in 0 until kotlin.math.min(2, recentWomen.size)) {
-                    val w = recentWomen[i]
-                    lines.add("• Training session logged (${w.lga})")
-                }
-                val recentSchools = try { ApiClient.fetchSchoolWasteBanks(this) } catch (_: Exception) { emptyList() }
-                for (i in 0 until kotlin.math.min(2, recentSchools.size)) {
-                    val sc = recentSchools[i]
-                    lines.add("• ${sc.schoolName} reported ${String.format("%.0f", sc.plasticCollectedKg)} kg plastics")
+                val recentEvac = try { ApiClient.fetchEvacuationTasks(this) } catch (_: Exception) { emptyList() }
+                for (i in 0 until kotlin.math.min(5, recentEvac.size)) {
+                    val t = recentEvac[i]
+                    val kg = t.totalKg?.let { String.format("%.0f kg", it) } ?: "—"
+                    lines.add("• ${t.sourceType} pickup (${t.lga}) $kg")
                 }
                 runOnUiThread {
                     val recentLayout = findViewById<LinearLayout>(R.id.recentActivity)
@@ -177,25 +163,11 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
                 val lines = mutableListOf<String>()
-                val recentPickers = try { ApiClient.fetchWastePickers(this) } catch (_: Exception) { emptyList() }
-                for (i in 0 until kotlin.math.min(3, recentPickers.size)) {
-                    val p = recentPickers[i]
-                    lines.add("• ${p.fullName} registered in ${p.lga}")
-                }
-                val recentAgg = try { ApiClient.fetchWasteAggregations(this) } catch (_: Exception) { emptyList() }
-                for (i in 0 until kotlin.math.min(2, recentAgg.size)) {
-                    val a = recentAgg[i]
-                    lines.add("• ${String.format("%.0f", a.totalWasteKg)} kg collected at ${a.siteName}")
-                }
-                val recentWomen = try { ApiClient.fetchWomenTrainingSessions(this) } catch (_: Exception) { emptyList() }
-                for (i in 0 until kotlin.math.min(2, recentWomen.size)) {
-                    val w = recentWomen[i]
-                    lines.add("• Training session logged (${w.lga})")
-                }
-                val recentSchools = try { ApiClient.fetchSchoolWasteBanks(this) } catch (_: Exception) { emptyList() }
-                for (i in 0 until kotlin.math.min(2, recentSchools.size)) {
-                    val sc = recentSchools[i]
-                    lines.add("• ${sc.schoolName} reported ${String.format("%.0f", sc.plasticCollectedKg)} kg plastics")
+                val recentEvac = try { ApiClient.fetchEvacuationTasks(this) } catch (_: Exception) { emptyList() }
+                for (i in 0 until kotlin.math.min(5, recentEvac.size)) {
+                    val t = recentEvac[i]
+                    val kg = t.totalKg?.let { String.format("%.0f kg", it) } ?: "—"
+                    lines.add("• ${t.sourceType} pickup (${t.lga}) $kg")
                 }
                 runOnUiThread {
                     val recentLayout = findViewById<LinearLayout>(R.id.recentActivity)

@@ -106,6 +106,9 @@
         <activity
             android:name=".EvacuationListActivity"
             android:exported="true" />
+        <activity
+            android:name=".EvacuationDetailActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

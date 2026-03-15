@@ -46,4 +46,29 @@ class EvacuationController extends Controller
     {
         return response()->json($evacuationTask);
     }
+
+    public function update(Request $request, EvacuationTask $evacuationTask)
+    {
+        $validated = $request->validate([
+            'source_type' => ['sometimes','string','max:100'],
+            'source_name' => ['nullable','string','max:255'],
+            'lga' => ['sometimes','string','max:100'],
+            'address' => ['nullable','string','max:255'],
+            'scheduled_at' => ['nullable','string','max:255'],
+            'assigned_to' => ['nullable','string','max:255'],
+            'status' => ['nullable','string','max:50'],
+            'total_kg' => ['nullable','numeric'],
+            'breakdown' => ['nullable','array'],
+            'breakdown.*.material' => ['string'],
+            'breakdown.*.kg' => ['numeric'],
+            'contamination_score' => ['nullable','integer','min:0','max:100'],
+            'photo_base64s' => ['nullable','array'],
+            'photo_base64s.*' => ['string'],
+            'gps_lat' => ['nullable','numeric'],
+            'gps_long' => ['nullable','numeric'],
+            'created_by_user_id' => ['nullable','string','max:255'],
+        ]);
+        $evacuationTask->update($validated);
+        return response()->json($evacuationTask);
+    }
 }

@@ -660,4 +660,35 @@ object ApiClient {
         }
         return out
     }
+
+    fun updateEvacuationTask(context: Context, id: String, fields: Map<String, Any?>): Pair<Int, String> {
+        val url = baseUrl(context) + "/evacuations/" + id
+        val json = JSONObject()
+        for ((k, v) in fields) {
+            when (v) {
+                null -> json.put(k, JSONObject.NULL)
+                is Number, is Boolean, is String -> json.put(k, v)
+                is List<*> -> {
+                    val arr = JSONArray()
+                    for (e in v) {
+                        if (e is Map<*, *>) {
+                            val o = JSONObject()
+                            for ((kk, vv) in e) { if (kk is String) o.put(kk, vv) }
+                            arr.put(o)
+                        } else arr.put(e)
+                    }
+                    json.put(k, arr)
+                }
+                else -> json.put(k, v.toString())
+            }
+        }
+        val body: RequestBody = json.toString().toRequestBody("application/json; charset=utf-8".toMediaType())
+        val reqBuilder = Request.Builder().url(url).put(body).addHeader("Accept", "application/json")
+        val token = authToken(context)
+        if (!token.isNullOrEmpty()) reqBuilder.addHeader("Authorization", "Bearer $token")
+        val resp = client.newCall(reqBuilder.build()).execute()
+        val status = resp.code
+        val s = try { resp.body?.string().orEmpty() } catch (_: Exception) { "" }
+        return status to s
+    }
 }

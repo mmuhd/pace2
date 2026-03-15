@@ -11,6 +11,11 @@
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Evacuation Pickups" android:textColor="@color/brand_dark" android:textStyle="bold" android:textSize="20sp" android:layout_marginStart="12dp" />
     </LinearLayout>
 
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp">
+        <Spinner android:id="@+id/filterLga" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+        <Spinner android:id="@+id/filterStatus" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" android:layout_marginStart="8dp" />
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/evacRecycler"
         android:layout_width="match_parent"
