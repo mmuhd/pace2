@@ -19,6 +19,13 @@
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Source type" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="12dp" />
         <Spinner android:id="@+id/sourceTypeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
 
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Vehicle type" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+        <Spinner android:id="@+id/vehicleTypeSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Wheel config" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+        <Spinner android:id="@+id/wheelConfigSpinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:popupBackground="@android:color/white" />
+        <TextView android:id="@+id/capacityHint" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/brand_dark_50" android:textSize="12sp" />
+
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Source name" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
         <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
             <com.google.android.material.textfield.TextInputEditText android:id="@+id/sourceNameEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" />
@@ -40,6 +47,11 @@
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Assigned driver/team" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
         <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
             <com.google.android.material.textfield.TextInputEditText android:id="@+id/assignedEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/spinner_bg" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Total load (kg)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/totalKgEdit" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal" android:background="@drawable/spinner_bg" android:textColor="@color/brand_dark" android:textColorHint="@color/brand_dark_50" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Mini characterization (kg)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="12dp" />
@@ -69,6 +81,8 @@
                 <com.google.android.material.textfield.TextInputEditText android:id="@+id/kgOther" android:layout_width="80dp" android:layout_height="wrap_content" android:inputType="numberDecimal" android:background="@drawable/spinner_bg" />
             </LinearLayout>
         </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/estimateBtn" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Apply 30% recyclable / 70% organic" android:textAllCaps="false" android:layout_marginTop="8dp" app:cornerRadius="8dp" style="@style/Widget.MaterialComponents.Button" android:backgroundTint="@color/brand_dark" android:textColor="@android:color/white" />
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Contamination score (0–100)" android:textColor="@color/brand_dark" android:textSize="12sp" android:layout_marginTop="8dp" />
         <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" app:boxBackgroundMode="none">

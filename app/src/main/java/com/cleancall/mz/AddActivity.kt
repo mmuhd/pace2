@@ -13,14 +13,11 @@ class AddActivity : AppCompatActivity() {
         findViewById<View>(R.id.cardRegisterPicker).setOnClickListener {
             startActivity(android.content.Intent(this, RegisterPickerActivity::class.java))
         }
-        findViewById<View>(R.id.cardWomenTraining).setOnClickListener {
-            startActivity(android.content.Intent(this, RegisterWomenTrainingActivity::class.java))
-        }
         findViewById<View>(R.id.cardSchoolWasteBank).setOnClickListener {
             startActivity(android.content.Intent(this, SchoolWasteBankEntryActivity::class.java))
         }
         findViewById<View>(R.id.cardWasteAggregation).setOnClickListener {
-            startActivity(android.content.Intent(this, WasteAggregationEntryActivity::class.java))
+            startActivity(android.content.Intent(this, EvacuationEntryActivity::class.java))
         }
         findViewById<View>(R.id.cardStakeholderCommitment).setOnClickListener {
             startActivity(android.content.Intent(this, StakeholderCommitmentEntryActivity::class.java))
