@@ -175,18 +175,20 @@ class SettingsActivity : AppCompatActivity() {
                     var count = 0
                     try { PickerStore.migrateLegacyLocalToPending(this) } catch (_: Exception) {}
                     try { count = PickerStore.syncPending(this) } catch (_: Exception) {}
+                    var evacCount = 0
+                    try { evacCount = EvacuationStore.syncPending(this) } catch (_: Exception) {}
                     val log = PickerStore.getSyncLog(this)
                     runOnUiThread {
                         syncProgress.visibility = View.GONE
                         syncBtn.isEnabled = true
-                        if (count == 0 && log.isNotBlank()) {
+                        if ((count + evacCount) == 0 && log.isNotBlank()) {
                             androidx.appcompat.app.AlertDialog.Builder(this)
                                 .setTitle("Sync details")
                                 .setMessage(log)
                                 .setPositiveButton("OK", null)
                                 .show()
                         } else {
-                            Toast.makeText(this, "Synced $count pending records", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Synced " + (count + evacCount) + " pending records", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }.start()

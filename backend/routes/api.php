@@ -6,6 +6,7 @@ use App\Http\Controllers\WastePickerController;
 use App\Http\Controllers\WomenTrainingSessionController;
 use App\Http\Controllers\SchoolWasteBankRecordController;
 use App\Http\Controllers\WasteAggregationController;
+use App\Http\Controllers\EvacuationController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AuthController;
 
@@ -15,6 +16,7 @@ Route::middleware('api')->group(function () {
     Route::apiResource('women-trainings', WomenTrainingSessionController::class)->only(['index','show']);
     Route::apiResource('schools', SchoolWasteBankRecordController::class)->only(['index','show']);
     Route::apiResource('aggregations', WasteAggregationController::class)->only(['index','show']);
+    Route::apiResource('evacuations', EvacuationController::class)->only(['index','show']);
     Route::get('reports/overview', [ReportController::class, 'overview']);
     Route::post('auth/login', [AuthController::class, 'login']);
     Route::post('auth/register', [AuthController::class, 'register']);
@@ -28,5 +30,6 @@ Route::middleware('api')->group(function () {
         Route::apiResource('women-trainings', WomenTrainingSessionController::class)->only(['store','update','destroy']);
         Route::apiResource('schools', SchoolWasteBankRecordController::class)->only(['store','update','destroy']);
         Route::apiResource('aggregations', WasteAggregationController::class)->only(['store','update','destroy']);
+        Route::apiResource('evacuations', EvacuationController::class)->only(['store','update','destroy']);
     });
 });

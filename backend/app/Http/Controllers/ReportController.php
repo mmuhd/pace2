@@ -8,6 +8,7 @@ use App\Models\WomenTrainingSession;
 use App\Models\SchoolWasteBankRecord;
 use App\Models\WasteAggregation;
 use App\Models\StakeholderCommitment;
+use App\Models\EvacuationTask;
 
 class ReportController extends Controller
 {
@@ -68,16 +69,22 @@ class ReportController extends Controller
         $topSchoolsPlastics = $schools->groupBy('school_name')->map(function ($items) { return $items->sum('plastic_collected_kg'); })
             ->sortDesc()->take(3)->map(function ($v, $k) { return [ 'school'=>$k, 'kg'=>$v]; })->values();
 
+        $evacQ = EvacuationTask::query();
+        if ($from) $evacQ->whereDate('created_at', '>=', $from);
+        if ($to) $evacQ->whereDate('created_at', '<=', $to);
+        if ($lga) $evacQ->where('lga', $lga);
+        $evacs = $evacQ->get();
+        $evacTotalKg = $evacs->sum('total_kg');
+        $evacPending = $evacs->where('status','pending')->count();
+        $evacToday = EvacuationTask::whereDate('created_at', now()->toDateString())->count();
+        $evacContamAvg = $evacs->filter(fn($t)=>!is_null($t->contamination_score))->avg('contamination_score');
+
         $out = [
             'kpis' => [
-                'waste_pickers' => $pickers->count(),
-                'women_sessions' => $sessions->count(),
-                'women_total' => $sessions->sum('total_women'),
-                'active_schools_30d' => $activeSchools30,
-                'total_agg_kg' => round($totalAggKg, 1),
-                'est_recyclables_kg' => round($estRecyclablesKg, 1),
-                'commitments' => $statusCounts,
-                'overdue_commitments' => $overdue,
+                'evac_pickups_today' => $evacToday,
+                'evac_pending_pickups' => $evacPending,
+                'evac_total_kg' => round($evacTotalKg, 1),
+                'evac_avg_contamination' => round($evacContamAvg ?? 0, 1),
             ],
             'insights' => [
                 'top_lgas_by_waste' => $topLgas,

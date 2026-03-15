@@ -592,4 +592,72 @@ object ApiClient {
         }
         return out
     }
+
+    fun postEvacuationTask(context: Context, t: EvacuationTask): Pair<Int, String> {
+        val url = baseUrl(context) + "/evacuations"
+        val breakdownArr = JSONArray()
+        for (p in t.breakdown) {
+            breakdownArr.put(JSONObject().apply { put("material", p.first); put("kg", p.second) })
+        }
+        val json = JSONObject().apply {
+            put("source_type", t.sourceType)
+            put("source_name", t.sourceName)
+            put("lga", t.lga)
+            put("address", t.address)
+            put("scheduled_at", t.scheduledAt)
+            put("assigned_to", t.assignedTo)
+            put("status", t.status)
+            put("total_kg", t.totalKg)
+            put("breakdown", breakdownArr)
+            put("contamination_score", t.contaminationScore)
+            put("photo_base64s", JSONArray(t.photoBase64s))
+            put("gps_lat", t.gpsLat)
+            put("gps_long", t.gpsLong)
+            put("created_by_user_id", t.createdByUserId)
+        }.toString()
+        val body: RequestBody = json.toRequestBody("application/json; charset=utf-8".toMediaType())
+        val reqBuilder = Request.Builder().url(url).post(body).addHeader("Accept", "application/json")
+        val token = authToken(context)
+        if (!token.isNullOrEmpty()) reqBuilder.addHeader("Authorization", "Bearer $token")
+        val resp = client.newCall(reqBuilder.build()).execute()
+        val status = resp.code
+        val s = try { resp.body?.string().orEmpty() } catch (_: Exception) { "" }
+        return status to s
+    }
+
+    fun fetchEvacuationTasks(context: Context): List<EvacuationTask> {
+        val url = baseUrl(context) + "/evacuations?per_page=100"
+        val req = Request.Builder().url(url).get().addHeader("Accept", "application/json").build()
+        val resp = client.newCall(req).execute()
+        if (!resp.isSuccessful) return emptyList()
+        val s = resp.body?.string().orEmpty()
+        val arr = try {
+            val obj = JSONObject(s)
+            if (obj.has("data")) obj.getJSONArray("data") else JSONArray(s)
+        } catch (_: Exception) { JSONArray() }
+        val out = mutableListOf<EvacuationTask>()
+        for (i in 0 until arr.length()) {
+            val item = arr.optJSONObject(i) ?: continue
+            val mapped = JSONObject().apply {
+                put("id", item.optString("id"))
+                put("sourceType", item.optString("source_type"))
+                put("sourceName", item.optString("source_name"))
+                put("lga", item.optString("lga"))
+                put("address", item.optString("address"))
+                put("scheduledAt", item.optString("scheduled_at"))
+                put("assignedTo", item.optString("assigned_to"))
+                put("status", item.optString("status"))
+                put("totalKg", item.optDouble("total_kg"))
+                put("breakdown", item.optJSONArray("breakdown") ?: JSONArray())
+                put("contaminationScore", item.optInt("contamination_score"))
+                put("photoBase64s", item.optJSONArray("photo_base64s") ?: JSONArray())
+                put("gpsLat", item.optDouble("gps_lat"))
+                put("gpsLong", item.optDouble("gps_long"))
+                put("createdByUserId", item.optString("created_by_user_id"))
+                put("createdAt", 0)
+            }
+            out.add(EvacuationTask.fromJson(mapped))
+        }
+        return out
+    }
 }

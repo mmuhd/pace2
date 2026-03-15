@@ -79,9 +79,31 @@ class EvacuationEntryActivity : AppCompatActivity() {
                 createdByUserId = getSharedPreferences("clean_call", MODE_PRIVATE).getString("user_name", null),
                 createdAt = System.currentTimeMillis()
             )
-            EvacuationStore.save(this, task)
-            android.widget.Toast.makeText(this, "Pickup saved", android.widget.Toast.LENGTH_SHORT).show()
-            finish()
+            saveBtn.isEnabled = false
+            Thread {
+                var status = -1
+                var body = ""
+                val ok = try {
+                    val res = ApiClient.postEvacuationTask(this, task)
+                    status = res.first
+                    body = res.second
+                    status in 200..299
+                } catch (_: Exception) { false }
+                runOnUiThread {
+                    saveBtn.isEnabled = true
+                    if (ok) {
+                        android.widget.Toast.makeText(this, "Pickup saved to backend", android.widget.Toast.LENGTH_SHORT).show()
+                        finish()
+                    } else {
+                        EvacuationStore.savePending(this, task)
+                        androidx.appcompat.app.AlertDialog.Builder(this)
+                            .setTitle("Saved locally due to network/auth issue.")
+                            .setMessage("Status: " + status + "\nBody: " + body.take(300))
+                            .setPositiveButton("OK", null)
+                            .show()
+                    }
+                }
+            }.start()
         }
     }
 }

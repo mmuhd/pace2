@@ -66,15 +66,15 @@ class HomeActivity : AppCompatActivity() {
                     val s = resp.body?.string().orEmpty()
                     val obj = org.json.JSONObject(s)
                     val kpis = obj.optJSONObject("kpis")
-                    val wastePickers = kpis?.optInt("waste_pickers") ?: 0
-                    val womenSessions = kpis?.optInt("women_sessions") ?: 0
-                    val activeSchools = kpis?.optInt("active_schools_30d") ?: 0
-                    val totalAggKg = kpis?.optDouble("total_agg_kg", 0.0) ?: 0.0
+                    val pickupsToday = kpis?.optInt("evac_pickups_today") ?: 0
+                    val pendingPickups = kpis?.optInt("evac_pending_pickups") ?: 0
+                    val evacTotalKg = kpis?.optDouble("evac_total_kg", 0.0) ?: 0.0
+                    val avgContam = kpis?.optDouble("evac_avg_contamination", 0.0) ?: 0.0
                     runOnUiThread {
-                        kpi1.text = wastePickers.toString()
-                        kpi2.text = womenSessions.toString()
-                        kpi3.text = activeSchools.toString()
-                        kpi4.text = String.format("%.1ft", totalAggKg / 1000.0)
+                        kpi1.text = pickupsToday.toString()
+                        kpi2.text = pendingPickups.toString()
+                        kpi3.text = String.format("%.1f", evacTotalKg)
+                        kpi4.text = String.format("%.1f%%", avgContam)
                     }
                 }
                 val lines = mutableListOf<String>()
@@ -165,15 +165,15 @@ class HomeActivity : AppCompatActivity() {
                     val s = resp.body?.string().orEmpty()
                     val obj = org.json.JSONObject(s)
                     val kpis = obj.optJSONObject("kpis")
-                    val wastePickers = kpis?.optInt("waste_pickers") ?: 0
-                    val womenSessions = kpis?.optInt("women_sessions") ?: 0
-                    val activeSchools = kpis?.optInt("active_schools_30d") ?: 0
-                    val totalAggKg = kpis?.optDouble("total_agg_kg", 0.0) ?: 0.0
+                    val pickupsToday = kpis?.optInt("evac_pickups_today") ?: 0
+                    val pendingPickups = kpis?.optInt("evac_pending_pickups") ?: 0
+                    val evacTotalKg = kpis?.optDouble("evac_total_kg", 0.0) ?: 0.0
+                    val avgContam = kpis?.optDouble("evac_avg_contamination", 0.0) ?: 0.0
                     runOnUiThread {
-                        kpi1.text = wastePickers.toString()
-                        kpi2.text = womenSessions.toString()
-                        kpi3.text = activeSchools.toString()
-                        kpi4.text = String.format("%.1ft", totalAggKg / 1000.0)
+                        kpi1.text = pickupsToday.toString()
+                        kpi2.text = pendingPickups.toString()
+                        kpi3.text = String.format("%.1f", evacTotalKg)
+                        kpi4.text = String.format("%.1f%%", avgContam)
                     }
                 }
                 val lines = mutableListOf<String>()
@@ -217,7 +217,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         AlertDialog.Builder(this)
-            .setTitle("Exit CleanCall")
+            .setTitle("Exit REMASAB")
             .setMessage("Are you sure you want to quit the app?")
             .setNegativeButton("No", null)
             .setPositiveButton("Yes") { _, _ ->

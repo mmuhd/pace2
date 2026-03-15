@@ -26,12 +26,12 @@
             android:textSize="20sp"
             android:textColor="@color/brand_dark" />
 
-        <TextView
-            android:id="@+id/headerBrand"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="CleanCall"
+            <TextView
+                android:id="@+id/headerBrand"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/app_name"
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="@color/brand_dark"
@@ -112,7 +112,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Waste Pickers Registered"
+                                android:text="Pickups Today"
                                 android:textColor="@color/brand_dark"
                                 android:textStyle="bold"
                                 android:textSize="12sp" />
@@ -158,7 +158,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Women Trained"
+                                android:text="Pending Pickups"
                                 android:textColor="@color/brand_dark"
                                 android:textStyle="bold"
                                 android:textSize="12sp" />
@@ -212,7 +212,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Active School Waste Banks"
+                                android:text="Total Evacuation (kg)"
                                 android:textColor="@color/brand_dark"
                                 android:textStyle="bold"
                                 android:textSize="12sp" />
@@ -258,7 +258,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Waste Aggregated This Month"
+                                android:text="Avg Contamination (%)"
                                 android:textColor="@color/brand_dark"
                                 android:textStyle="bold"
                                 android:textSize="12sp" />

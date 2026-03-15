@@ -25,5 +25,8 @@ class RecordsActivity : AppCompatActivity() {
         findViewById<View>(R.id.cardStakeholderCommitment).setOnClickListener {
             startActivity(android.content.Intent(this, StakeholderCommitmentListActivity::class.java))
         }
+        findViewById<View>(R.id.cardEvacuation).setOnClickListener {
+            startActivity(android.content.Intent(this, EvacuationListActivity::class.java))
+        }
     }
 }
