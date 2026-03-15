@@ -115,7 +115,7 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
         if (sizeSpinner != null) {
-            val sizes = listOf("Small", "Medium", "Large")
+            val sizes = listOf("Small", "Medium", "Large", "Extra Large")
             val adapter = ArrayAdapter(this, R.layout.spinner_item, sizes)
             adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
             sizeSpinner.adapter = adapter
@@ -127,7 +127,7 @@ class SettingsActivity : AppCompatActivity() {
                 override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                     if (initializingSize) { initializingSize = false; return }
                     prefs.edit().putString("pref_text_size", sizes[position]).apply()
-                    val scale = when (sizes[position]) { "Small" -> 0.85f; "Large" -> 1.15f; else -> 1.0f }
+                    val scale = when (sizes[position]) { "Small" -> 0.85f; "Large" -> 1.15f; "Extra Large" -> 1.30f; else -> 1.0f }
                     val res = resources
                     val config = android.content.res.Configuration(res.configuration)
                     config.fontScale = scale

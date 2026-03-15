@@ -1,6 +1,10 @@
 package com.cleancall.mz
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Base64
+import java.io.ByteArrayOutputStream
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
@@ -21,6 +25,51 @@ object ApiClient {
     private fun authToken(context: Context): String? {
         val prefs = context.getSharedPreferences("clean_call", Context.MODE_PRIVATE)
         return prefs.getString("api_token", null)
+    }
+
+    private fun shrinkBase64IfNeeded(base64: String?, maxBytes: Int = 60000, maxDim: Int = 1024): String? {
+        if (base64.isNullOrEmpty()) return base64
+        if (base64.length <= maxBytes) return base64
+        return try {
+            val data = Base64.decode(base64, Base64.DEFAULT)
+            val bmp = BitmapFactory.decodeByteArray(data, 0, data.size) ?: return base64
+            var w = bmp.width
+            var h = bmp.height
+            var scaled = bmp
+            val maxSide = maxOf(w, h)
+            if (maxSide > maxDim) {
+                val ratio = maxSide.toFloat() / maxDim.toFloat()
+                val nw = (w / ratio).toInt().coerceAtLeast(1)
+                val nh = (h / ratio).toInt().coerceAtLeast(1)
+                scaled = Bitmap.createScaledBitmap(bmp, nw, nh, true)
+                w = nw
+                h = nh
+            }
+            var quality = 80
+            var outBytes: ByteArray
+            var attempts = 0
+            while (true) {
+                val out = ByteArrayOutputStream()
+                scaled.compress(Bitmap.CompressFormat.JPEG, quality, out)
+                outBytes = out.toByteArray()
+                if (outBytes.size * 4 / 3 <= maxBytes || quality <= 50) break
+                quality -= 10
+                attempts++
+                if (attempts > 10) break
+            }
+            if (outBytes.size * 4 / 3 > maxBytes) {
+                val r2 = 0.85f
+                val nw2 = (w * r2).toInt().coerceAtLeast(1)
+                val nh2 = (h * r2).toInt().coerceAtLeast(1)
+                val scaled2 = Bitmap.createScaledBitmap(scaled, nw2, nh2, true)
+                val out2 = ByteArrayOutputStream()
+                scaled2.compress(Bitmap.CompressFormat.JPEG, 70, out2)
+                outBytes = out2.toByteArray()
+            }
+            Base64.encodeToString(outBytes, Base64.NO_WRAP)
+        } catch (_: Exception) {
+            base64
+        }
     }
 
     fun postStakeholderCommitment(context: Context, item: StakeholderCommitment): Boolean {
@@ -426,7 +475,7 @@ object ApiClient {
             put("training_provider", p.trainingProvider)
             put("willing_to_join", p.willingToJoin)
             put("special_needs", p.specialNeeds)
-            put("photo_base64", p.photoBase64)
+            put("photo_base64", shrinkBase64IfNeeded(p.photoBase64))
         }.toString()
         val body: RequestBody = json.toRequestBody("application/json; charset=utf-8".toMediaType())
         val reqBuilder = Request.Builder().url(url).post(body).addHeader("Accept", "application/json")
@@ -458,7 +507,7 @@ object ApiClient {
             put("training_provider", p.trainingProvider)
             put("willing_to_join", p.willingToJoin)
             put("special_needs", p.specialNeeds)
-            put("photo_base64", p.photoBase64)
+            put("photo_base64", shrinkBase64IfNeeded(p.photoBase64))
         }.toString()
         val body: RequestBody = json.toRequestBody("application/json; charset=utf-8".toMediaType())
         val reqBuilder = Request.Builder().url(url).post(body).addHeader("Accept", "application/json")
@@ -490,7 +539,7 @@ object ApiClient {
             put("training_provider", p.trainingProvider)
             put("willing_to_join", p.willingToJoin)
             put("special_needs", p.specialNeeds)
-            put("photo_base64", p.photoBase64)
+            put("photo_base64", shrinkBase64IfNeeded(p.photoBase64))
         }.toString()
         val body: RequestBody = json.toRequestBody("application/json; charset=utf-8".toMediaType())
         val reqBuilder = Request.Builder().url(url).post(body).addHeader("Accept", "application/json")

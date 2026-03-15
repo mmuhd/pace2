@@ -12,6 +12,20 @@ import android.content.Intent
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        run {
+            val prefs = getSharedPreferences("clean_call", MODE_PRIVATE)
+            val size = prefs.getString("pref_text_size", "Medium") ?: "Medium"
+            val scale = when (size) {
+                "Small" -> 0.85f
+                "Large" -> 1.15f
+                "Extra Large" -> 1.30f
+                else -> 1.0f
+            }
+            val res = resources
+            val conf = android.content.res.Configuration(res.configuration)
+            conf.fontScale = scale
+            res.updateConfiguration(conf, res.displayMetrics)
+        }
         setContentView(R.layout.activity_home)
 
         val prefs = getSharedPreferences("clean_call", MODE_PRIVATE)

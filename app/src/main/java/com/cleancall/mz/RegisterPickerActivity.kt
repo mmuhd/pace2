@@ -16,6 +16,42 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.UUID
 
 class RegisterPickerActivity : AppCompatActivity() {
+    private fun compressBitmapToBase64(bmp: Bitmap, maxDim: Int = 1024, maxBytes: Int = 60000): String {
+        var w = bmp.width
+        var h = bmp.height
+        var scaled = bmp
+        val maxSide = kotlin.math.max(w, h)
+        if (maxSide > maxDim) {
+            val ratio = maxSide.toFloat() / maxDim.toFloat()
+            val nw = (w / ratio).toInt().coerceAtLeast(1)
+            val nh = (h / ratio).toInt().coerceAtLeast(1)
+            scaled = Bitmap.createScaledBitmap(bmp, nw, nh, true)
+            w = nw
+            h = nh
+        }
+        var quality = 80
+        var data: ByteArray
+        var attempts = 0
+        while (true) {
+            val out = ByteArrayOutputStream()
+            scaled.compress(Bitmap.CompressFormat.JPEG, quality, out)
+            data = out.toByteArray()
+            if (data.size * 4 / 3 <= maxBytes || quality <= 50) break
+            quality -= 10
+            attempts++
+            if (attempts > 10) break
+        }
+        if (data.size * 4 / 3 > maxBytes) {
+            val r2 = 0.85f
+            val nw2 = (w * r2).toInt().coerceAtLeast(1)
+            val nh2 = (h * r2).toInt().coerceAtLeast(1)
+            val scaled2 = Bitmap.createScaledBitmap(scaled, nw2, nh2, true)
+            val out2 = ByteArrayOutputStream()
+            scaled2.compress(Bitmap.CompressFormat.JPEG, 70, out2)
+            data = out2.toByteArray()
+        }
+        return Base64.encodeToString(data, Base64.NO_WRAP)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register_picker)
@@ -80,10 +116,7 @@ class RegisterPickerActivity : AppCompatActivity() {
                 input?.close()
                 if (bytes != null) {
                     val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-                    val out = ByteArrayOutputStream()
-                    bmp.compress(Bitmap.CompressFormat.JPEG, 80, out)
-                    val b = out.toByteArray()
-                    photoBase64 = Base64.encodeToString(b, Base64.NO_WRAP)
+                    photoBase64 = compressBitmapToBase64(bmp)
                     photoPreview.setImageBitmap(bmp)
                 }
             }
@@ -91,10 +124,7 @@ class RegisterPickerActivity : AppCompatActivity() {
 
         val takePreview = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bmp ->
             if (bmp != null) {
-                val out = ByteArrayOutputStream()
-                bmp.compress(Bitmap.CompressFormat.JPEG, 80, out)
-                val b = out.toByteArray()
-                photoBase64 = Base64.encodeToString(b, Base64.NO_WRAP)
+                photoBase64 = compressBitmapToBase64(bmp)
                 photoPreview.setImageBitmap(bmp)
             }
         }
@@ -105,6 +135,7 @@ class RegisterPickerActivity : AppCompatActivity() {
         trainingYes.setOnCheckedChangeListener { _, checked ->
             trainingProviderRow.visibility = if (checked) View.VISIBLE else View.GONE
         }
+
         trainingNo.setOnCheckedChangeListener { _, checked ->
             if (checked) trainingProviderRow.visibility = View.GONE
         }
