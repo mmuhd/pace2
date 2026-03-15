@@ -26,7 +26,7 @@ class AddActivity : AppCompatActivity() {
             startActivity(android.content.Intent(this, StakeholderCommitmentEntryActivity::class.java))
         }
         findViewById<View>(R.id.cardEvacuation).setOnClickListener {
-            startActivity(android.content.Intent(this, WasteAggregationEntryActivity::class.java))
+            startActivity(android.content.Intent(this, EvacuationEntryActivity::class.java))
         }
     }
 }
