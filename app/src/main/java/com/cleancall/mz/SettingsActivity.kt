@@ -177,18 +177,24 @@ class SettingsActivity : AppCompatActivity() {
                     try { count = PickerStore.syncPending(this) } catch (_: Exception) {}
                     var evacCount = 0
                     try { evacCount = EvacuationStore.syncPending(this) } catch (_: Exception) {}
+                    var aggCount = 0
+                    try { aggCount = WasteAggregationStore.syncPending(this) } catch (_: Exception) {}
+                    var schoolCount = 0
+                    try { schoolCount = SchoolWasteBankStore.syncPending(this) } catch (_: Exception) {}
+                    var commCount = 0
+                    try { commCount = StakeholderCommitmentStore.syncPending(this) } catch (_: Exception) {}
                     val log = PickerStore.getSyncLog(this)
                     runOnUiThread {
                         syncProgress.visibility = View.GONE
                         syncBtn.isEnabled = true
-                        if ((count + evacCount) == 0 && log.isNotBlank()) {
+                        if ((count + evacCount + aggCount + schoolCount + commCount) == 0 && log.isNotBlank()) {
                             androidx.appcompat.app.AlertDialog.Builder(this)
                                 .setTitle("Sync details")
                                 .setMessage(log)
                                 .setPositiveButton("OK", null)
                                 .show()
                         } else {
-                            Toast.makeText(this, "Synced " + (count + evacCount) + " pending records", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Synced " + (count + evacCount + aggCount + schoolCount + commCount) + " pending records", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }.start()

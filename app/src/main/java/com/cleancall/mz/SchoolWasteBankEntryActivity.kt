@@ -346,7 +346,7 @@ class SchoolWasteBankEntryActivity : AppCompatActivity() {
                             .setNegativeButton("Add Another") { dlg, _ -> dlg.dismiss(); clearForm() }
                             .show()
                     } else {
-                        SchoolWasteBankStore.save(this, record)
+                        SchoolWasteBankStore.savePending(this, record)
                         MaterialAlertDialogBuilder(this)
                             .setTitle("Saved locally due to network/auth issue.")
                             .setMessage("Choose next action")
@@ -372,7 +372,7 @@ class SchoolWasteBankEntryActivity : AppCompatActivity() {
                         Toast.makeText(this, "Entry saved successfully.", Toast.LENGTH_SHORT).show()
                         clearForm()
                     } else {
-                        SchoolWasteBankStore.save(this, record)
+                        SchoolWasteBankStore.savePending(this, record)
                         Toast.makeText(this, "Saved locally due to network/auth issue.", Toast.LENGTH_SHORT).show()
                         clearForm()
                     }

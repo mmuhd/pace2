@@ -341,7 +341,7 @@ class WasteAggregationEntryActivity : AppCompatActivity() {
                             .setNegativeButton("Add Another") { dlg, _ -> dlg.dismiss(); clearForm() }
                             .show()
                     } else {
-                        WasteAggregationStore.save(this, report)
+                        WasteAggregationStore.savePending(this, report)
                         MaterialAlertDialogBuilder(this)
                             .setTitle("Saved locally due to network/auth issue.")
                             .setMessage("Choose next action")
@@ -367,7 +367,7 @@ class WasteAggregationEntryActivity : AppCompatActivity() {
                         Toast.makeText(this, "Report saved successfully.", Toast.LENGTH_SHORT).show()
                         clearForm()
                     } else {
-                        WasteAggregationStore.save(this, report)
+                        WasteAggregationStore.savePending(this, report)
                         Toast.makeText(this, "Saved locally due to network/auth issue.", Toast.LENGTH_SHORT).show()
                         clearForm()
                     }

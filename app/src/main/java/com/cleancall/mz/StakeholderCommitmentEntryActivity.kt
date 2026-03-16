@@ -281,7 +281,7 @@ class StakeholderCommitmentEntryActivity : AppCompatActivity() {
                             .setNegativeButton("Add Another") { dlg, _ -> dlg.dismiss(); clearForm() }
                             .show()
                     } else {
-                        StakeholderCommitmentStore.save(this, item)
+                        StakeholderCommitmentStore.savePending(this, item)
                         MaterialAlertDialogBuilder(this)
                             .setTitle("Saved locally due to network/auth issue.")
                             .setMessage("Choose next action")
@@ -307,7 +307,7 @@ class StakeholderCommitmentEntryActivity : AppCompatActivity() {
                         Toast.makeText(this, "Commitment saved successfully.", Toast.LENGTH_SHORT).show()
                         clearForm()
                     } else {
-                        StakeholderCommitmentStore.save(this, item)
+                        StakeholderCommitmentStore.savePending(this, item)
                         Toast.makeText(this, "Saved locally due to network/auth issue.", Toast.LENGTH_SHORT).show()
                         clearForm()
                     }

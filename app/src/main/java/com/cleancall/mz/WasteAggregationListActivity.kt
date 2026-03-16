@@ -24,7 +24,8 @@ class WasteAggregationListActivity : AppCompatActivity() {
         }
         Thread {
             val remote = try { ApiClient.fetchWasteAggregations(this) } catch (_: Exception) { emptyList() }
-            val list = if (remote.isNotEmpty()) remote else WasteAggregationStore.list(this)
+            val pending = try { WasteAggregationStore.pending(this) } catch (_: Exception) { emptyList() }
+            val list = if (remote.isNotEmpty()) remote + pending else WasteAggregationStore.list(this) + pending
             runOnUiThread {
                 recycler.adapter = AggAdapter(list) { report ->
                     val i = android.content.Intent(this, WasteAggregationProfileActivity::class.java)

@@ -24,10 +24,11 @@ class SchoolWasteBankListActivity : AppCompatActivity() {
         }
         Thread {
             val remote = try { ApiClient.fetchSchoolWasteBanks(this) } catch (_: Exception) { emptyList() }
+            val pending = try { SchoolWasteBankStore.pending(this) } catch (_: Exception) { emptyList() }
             val list = if (remote.isNotEmpty()) {
                 SchoolWasteBankStore.replaceAll(this, remote)
-                remote
-            } else SchoolWasteBankStore.list(this)
+                remote + pending
+            } else SchoolWasteBankStore.list(this) + pending
             runOnUiThread {
                 recycler.adapter = SWBAdapter(list) { record ->
                     val i = android.content.Intent(this, SchoolWasteBankProfileActivity::class.java)
